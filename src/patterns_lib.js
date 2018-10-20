@@ -1,63 +1,106 @@
-const generateLine = function(symbol,numOfCharacters){
+const generateLine = function(symbol,number){
+  let line = "";
+  for(let num = 1; num <= number; num++){
+    line += symbol;
+  }
+  return line;
+}
+
+//-------------------(RECTANGLE)-------------------//
+
+const generateFilledRectangle = function(rows,columns){
+  let rectangle = "";
+  let newLine = "";
+  let starLine = generateLine("*",columns);
+  
+  for(let rowNum = 1; rowNum <= rows; rowNum++){
+    rectangle += newLine;
+    rectangle += starLine;
+    newLine = "\n";
+  }
+  return rectangle;
+}
+
+const generateEmptyRectangle = function(rows,columns){
+  let rectangle = "";
+  let starLine = generateLine("*",columns);
+  let spaceLine = generateLine(" ",columns-2);
+
+  rectangle += starLine+"\n";
+  for(let rowNum = 2; rowNum < rows; rowNum++){
+    rectangle += "*" + spaceLine + "*\n";
+  }
+  rectangle += starLine;
+  return rectangle;
+}
+
+const generateAlternateRectangle = function(rows,columns){
+  let rectangle = "";
+  let newLine = "";
+  let character = "";
+
+  for(let rowNum = 1; rowNum <= rows; rowNum++){
+    character = "*";
+    
+    if(rowNum%2 == 0){
+      character = "-";
+    }
+
+    rectangle += newLine + generateLine(character,columns);
+    newLine = "\n";
+  }
+  return rectangle;
+}
+
+const generateRectangle = function(typeOfRectangle,rows,columns){
+  if(typeOfRectangle == "filled"){
+    return generateFilledRectangle(rows,columns);
+  }
+  if(typeOfRectangle == "empty"){
+    return generateEmptyRectangle(rows,columns);
+  }
+  if(typeOfRectangle == "alternate"){
+    return generateAlternateRectangle(rows,columns);
+  }
+}
+
+//-------------------(TRIANGLE)-------------------//
+
+const generateLeftTriangle = function(numOfLines){
   let result = "";
-  for(characterNum = 1; characterNum <= numOfCharacters; characterNum++){
-    result += symbol;
+  let nextLine = "";
+  for(let lineNum = 1; lineNum <= numOfLines; lineNum++){
+    result += nextLine + generateLine("*",lineNum);
+    nextLine = "\n";
   }
   return result;
 }
 
-const alternateSecondHalf = function(numOfLines){
-  let numOfSpaces = 0;
-  let secondHalf = "";
-  let nextLine = "\n";
-  let character = "*";
-  let space = " ";
-  let count = 1;
-  let isCountEven;
-
-  for(let lineNum = numOfLines; lineNum > 0; lineNum-=2){
-    isCountEven = (count%2 == 0);
-    if(isCountEven){
-      character = "-";
-    }
-    secondHalf += nextLine + generateLine(space,numOfSpaces) + generateLine(character,lineNum);
-    numOfSpaces++;
-    character = "*";
-    count++;
-  }
-  return secondHalf;
-}
-
-const alternateFirstHalf = function(numOfLines){
-  let numOfSpaces = Math.floor(numOfLines/2);
-  let firstHalf = "";
+const generateRightTriangle = function(numOfLines){
+  let result = "";
   let nextLine = "";
-  let character = "*";
-  let space = " ";
-  let count = 1;
-  let isCountEven;
+  let numOfSpaces = numOfLines-1;
 
-  for(let lineNum = 1; lineNum < numOfLines; lineNum+=2){
-    isCountEven = (count%2 == 0);
-    if(isCountEven){
-      character = "-";
-    }
-    firstHalf += nextLine + generateLine(space,numOfSpaces) + generateLine(character,lineNum);
-    numOfSpaces--;
+  for(let lineNum = 1; lineNum <= numOfLines; lineNum++, numOfSpaces--){
+    result += nextLine + generateLine(" ",numOfSpaces) + generateLine("*",lineNum);
     nextLine = "\n";
-    character = "*";
-    count++;
   }
-  return firstHalf;
-} 
-
-const generateAlternateDiamond = function(numOfLines){
-  let firstHalf = alternateFirstHalf(numOfLines);
-  let secondHalf = alternateSecondHalf(numOfLines);
-  let diamond = firstHalf + secondHalf;
-  return diamond;
+  return result;
 }
 
+const generateTriangle = function(triangleAlignment,numOfLines){
+  let isAlignmentLeft = (triangleAlignment == "left");
+  let isAlignmentRight = (triangleAlignment == "right"); 
+  
+  if(isAlignmentLeft){
+    return generateLeftTriangle(numOfLines);
+  }
+  if(isAlignmentRight){
+    return generateRightTriangle(numOfLines);
+  }
+}
+
+//--------------------(DIAMOND)--------------------//
 
 const angledSecondHalf = function(numOfLines){
   let outerSpaces = 1;
@@ -179,26 +222,6 @@ const filledFirstHalf = function(numOfLines){
   return firstHalf;
 } 
 
-const filledDiamond = function(numOfLines){
-  let numOfSpaces = Math.floor(numOfLines/2);
-  let firstHalf = "";
-  let secondHalf = "";
-  let nextLine = "";
-  let star = "*";
-  let space = " ";
-  let currentLine = "";
-
-  for(let lineNum = 1; lineNum < numOfLines; lineNum+=2){
-    secondHalf = currentLine + nextLine + secondHalf;
-    currentLine = generateLine(space,numOfSpaces) + generateLine(star,lineNum);
-    firstHalf = firstHalf + nextLine + currentLine;
-    nextLine = "\n";
-    numOfSpaces--;
-  }
-  let diamond = firstHalf + "\n" + secondHalf
-  return diamond;
-}
-
 const generateFilledDiamond = function(numOfLines){
   let firstHalf = filledFirstHalf(numOfLines);
   let secondHalf = filledSecondHalf(numOfLines);
@@ -212,33 +235,21 @@ const generateDiamond = function(typeOfDiamond,numOfLines){
     numOfLines--;
   }
 
-  let message = "Diamond type not found";
-  switch(typeOfDiamond){
-    case "filled":
-      return generateFilledDiamond(numOfLines);
-      break;
-    
-    case "hollow":
-      return generateHollowDiamond(numOfLines);
-      break;
+  if(typeOfDiamond == "filled"){
+    return generateFilledDiamond(numOfLines);
+  }
 
-    case "angled":
-      return generateAngledDiamond(numOfLines);
-      break;
+  if(typeOfDiamond == "hollow"){
+    return generateHollowDiamond(numOfLines);
+  }
 
-    case "alternate":
-      return generateAlternateDiamond(numOfLines);
-      break;
-
-    default:
-      return message;
+  if(typeOfDiamond == "angled"){
+    return generateAngledDiamond(numOfLines);
   }
 }
 
-const main = function(){
-  let typeOfDiamond = process.argv[2];
-  let numOfLines = +process.argv[3];
-  console.log(generateDiamond(typeOfDiamond,numOfLines));
-}
+//--------------------(exports)--------------------//
 
-main();
+exports.generateRectangle = generateRectangle;
+exports.generateTriangle = generateTriangle;
+exports.generateDiamond = generateDiamond;
