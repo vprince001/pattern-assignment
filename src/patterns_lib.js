@@ -1,4 +1,4 @@
-const generateLine = function(symbol,number){
+const repeatCharacter = function(symbol,number){
   let line = "";
   for(let num = 1; num <= number; num++){
     line += symbol;
@@ -11,7 +11,7 @@ const generateLine = function(symbol,number){
 const generateFilledRectangle = function(rows,columns){
   let rectangle = "";
   let newLine = "";
-  let starLine = generateLine("*",columns);
+  let starLine = repeatCharacter("*",columns);
   
   for(let rowNum = 1; rowNum <= rows; rowNum++){
     rectangle += newLine;
@@ -23,8 +23,8 @@ const generateFilledRectangle = function(rows,columns){
 
 const generateEmptyRectangle = function(rows,columns){
   let rectangle = "";
-  let starLine = generateLine("*",columns);
-  let spaceLine = generateLine(" ",columns-2);
+  let starLine = repeatCharacter("*",columns);
+  let spaceLine = repeatCharacter(" ",columns-2);
 
   rectangle += starLine+"\n";
   for(let rowNum = 2; rowNum < rows; rowNum++){
@@ -46,7 +46,7 @@ const generateAlternateRectangle = function(rows,columns){
       character = "-";
     }
 
-    rectangle += newLine + generateLine(character,columns);
+    rectangle += newLine + repeatCharacter(character,columns);
     newLine = "\n";
   }
   return rectangle;
@@ -70,7 +70,7 @@ const generateLeftTriangle = function(numOfLines){
   let result = "";
   let nextLine = "";
   for(let lineNum = 1; lineNum <= numOfLines; lineNum++){
-    result += nextLine + generateLine("*",lineNum);
+    result += nextLine + repeatCharacter("*",lineNum);
     nextLine = "\n";
   }
   return result;
@@ -82,7 +82,7 @@ const generateRightTriangle = function(numOfLines){
   let numOfSpaces = numOfLines-1;
 
   for(let lineNum = 1; lineNum <= numOfLines; lineNum++, numOfSpaces--){
-    result += nextLine + generateLine(" ",numOfSpaces) + generateLine("*",lineNum);
+    result += nextLine + repeatCharacter(" ",numOfSpaces) + repeatCharacter("*",lineNum);
     nextLine = "\n";
   }
   return result;
@@ -112,14 +112,14 @@ const angledSecondHalf = function(numOfLines){
   let forwardSlash = "/";
   let backwardSlash = "\\";
 
-  secondHalf += nextLine + star + generateLine(space,innerSpaces) + star;
+  secondHalf += nextLine + star + repeatCharacter(space,innerSpaces) + star;
   for(let lineNum = numOfLines; lineNum > 3; lineNum-=2){
     innerSpaces -= 2;
-    secondHalf += nextLine + generateLine(space,outerSpaces) + backwardSlash;
-    secondHalf += generateLine(space,innerSpaces) + forwardSlash;
+    secondHalf += nextLine + repeatCharacter(space,outerSpaces) + backwardSlash;
+    secondHalf += repeatCharacter(space,innerSpaces) + forwardSlash;
     outerSpaces++;
   }
-  secondHalf += "\n" + generateLine(space,outerSpaces) + star;
+  secondHalf += "\n" + repeatCharacter(space,outerSpaces) + star;
   return secondHalf;
 }
 
@@ -133,11 +133,11 @@ const angledFirstHalf = function(numOfLines){
   let backwardSlash = "\\";
   let nextLine = "\n";
 
-  firstHalf += generateLine(space,outerSpaces) + star;
+  firstHalf += repeatCharacter(space,outerSpaces) + star;
   for(let lineNum = 3; lineNum < numOfLines-1; lineNum+=2){
     outerSpaces--;
-    firstHalf += nextLine + generateLine(space,outerSpaces) + forwardSlash;
-    firstHalf += generateLine(space,innerSpaces) + backwardSlash;
+    firstHalf += nextLine + repeatCharacter(space,outerSpaces) + forwardSlash;
+    firstHalf += repeatCharacter(space,innerSpaces) + backwardSlash;
     innerSpaces += 2;
   }
   return firstHalf;
@@ -159,12 +159,12 @@ const hollowSecondHalf = function(numOfLines){
   let nextLine = "\n";
 
   for(let lineNum = numOfLines; lineNum > 1; lineNum-=2){
-    secondHalf += nextLine + generateLine(space,outerSpaces) + star;
-    secondHalf += generateLine(space,innerSpaces) + star;
+    secondHalf += nextLine + repeatCharacter(space,outerSpaces) + star;
+    secondHalf += repeatCharacter(space,innerSpaces) + star;
     outerSpaces++;
     innerSpaces -= 2;
   }
-  secondHalf += nextLine + generateLine(space,outerSpaces) + star;
+  secondHalf += nextLine + repeatCharacter(space,outerSpaces) + star;
   return secondHalf;
 }
 
@@ -176,11 +176,11 @@ const hollowFirstHalf = function(numOfLines){
   let space = " ";
   let nextLine = "\n";
 
-  firstHalf += generateLine(space,outerSpaces) + star;
+  firstHalf += repeatCharacter(space,outerSpaces) + star;
   for(let lineNum = 3; lineNum < numOfLines-1; lineNum+=2){
     outerSpaces--;
-    firstHalf += nextLine + generateLine(space,outerSpaces) + star;
-    firstHalf += generateLine(space,innerSpaces) + star;
+    firstHalf += nextLine + repeatCharacter(space,outerSpaces) + star;
+    firstHalf += repeatCharacter(space,innerSpaces) + star;
     innerSpaces += 2;
   }
   return firstHalf;
@@ -201,7 +201,7 @@ const filledSecondHalf = function(numOfLines){
   let space = " ";
 
   for(let lineNum = numOfLines; lineNum > 0; lineNum-=2){
-    secondHalf += nextLine + generateLine(space,numOfSpaces) + generateLine(star,lineNum);
+    secondHalf += nextLine + repeatCharacter(space,numOfSpaces) + repeatCharacter(star,lineNum);
     numOfSpaces++;
   }
   return secondHalf;
@@ -215,7 +215,7 @@ const filledFirstHalf = function(numOfLines){
   let space = " ";
 
   for(let lineNum = 1; lineNum < numOfLines; lineNum+=2){
-    firstHalf += nextLine + generateLine(space,numOfSpaces) + generateLine(star,lineNum);
+    firstHalf += nextLine + repeatCharacter(space,numOfSpaces) + repeatCharacter(star,lineNum);
     nextLine = "\n";
     numOfSpaces--;
   }
