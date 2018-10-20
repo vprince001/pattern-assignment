@@ -53,3 +53,26 @@ assert.equal(generateTriangle("right",2),rightTriangle_2);
 let rightTriangle_6 = "     *\n    **\n   ***\n";
 rightTriangle_6 += "  ****\n *****\n******";
 assert.equal(generateTriangle("right",6),rightTriangle_6);
+
+
+//=================(DIAMOND TESTS)=================//
+const {generateDiamond} = require("../src/patterns_lib.js");
+
+//--------------(Filled Diamond Test)--------------//
+let filledDiamond_3 = " *\n***\n *";
+let filledDiamond_5 = "  *\n ***\n*****\n ***\n  *";
+
+assert.equal(generateDiamond("filled",3),filledDiamond_3);
+assert.equal(generateDiamond("filled",5),filledDiamond_5);
+
+//--------------(Hollow Diamond Test)--------------//
+let hollowDiamond_3 = " *\n* *\n *";
+let hollowDiamond_5 = "  *\n * *\n*   *\n * *\n  *"
+assert.equal(generateDiamond("hollow",3),hollowDiamond_3);
+assert.equal(generateDiamond("hollow",5),hollowDiamond_5);
+
+//--------------(Angled Diamond Test)--------------//
+let angledDiamond_3 = " *\n* *\n *";
+let angledDiamond_5 = "  *\n / \\\n*   *\n \\ /\n  *";
+assert.equal(generateDiamond("angled",3),angledDiamond_3);
+assert.equal(generateDiamond("angled",5),angledDiamond_5);
