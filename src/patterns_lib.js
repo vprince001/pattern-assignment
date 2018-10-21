@@ -235,17 +235,11 @@ const generateDiamond = function(typeOfDiamond,numOfLines){
     numOfLines--;
   }
 
-  if(typeOfDiamond == "filled"){
-    return generateFilledDiamond(numOfLines);
-  }
-
-  if(typeOfDiamond == "hollow"){
-    return generateHollowDiamond(numOfLines);
-  }
-
-  if(typeOfDiamond == "angled"){
-    return generateAngledDiamond(numOfLines);
-  }
+  const diamondTypes = {};
+  diamondTypes["filled"] = generateFilledDiamond(numOfLines);
+  diamondTypes["hollow"] = generateHollowDiamond(numOfLines);
+  diamondTypes["angled"] = generateAngledDiamond(numOfLines);
+  return diamondTypes[typeOfDiamond];
 }
 
 //--------------------(exports)--------------------//
