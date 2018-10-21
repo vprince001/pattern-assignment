@@ -5,16 +5,8 @@ const repeatCharacter = function(character,times){
 //-------------------(RECTANGLE)-------------------//
 
 const generateFilledRectangle = function(rows,columns){
-  let rectangle = "";
-  let newLine = "";
-  let starLine = repeatCharacter("*",columns);
-  
-  for(let rowNum = 1; rowNum <= rows; rowNum++){
-    rectangle += newLine;
-    rectangle += starLine;
-    newLine = "\n";
-  }
-  return rectangle;
+  line = repeatCharacter("*",columns);
+  return new Array(rows).fill(line).join("\n");
 }
 
 const generateEmptyRectangle = function(rows,columns){
