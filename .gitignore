@@ -1,2 +1,3 @@
 .actual_out
 *.swp
+.DS_Store

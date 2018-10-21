@@ -1,9 +1,5 @@
-const repeatCharacter = function(symbol,number){
-  let line = "";
-  for(let num = 1; num <= number; num++){
-    line += symbol;
-  }
-  return line;
+const repeatCharacter = function(character,times){
+  return new Array(times).fill(character).join("");
 }
 
 //-------------------(RECTANGLE)-------------------//
