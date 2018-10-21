@@ -5,20 +5,15 @@ const repeatCharacter = function(character,times){
 //-------------------(RECTANGLE)-------------------//
 
 const generateFilledRectangle = function(rows,columns){
-  line = repeatCharacter("*",columns);
+  let line = repeatCharacter("*",columns);
   return new Array(rows).fill(line).join("\n");
 }
 
 const generateEmptyRectangle = function(rows,columns){
-  let rectangle = "";
-  let starLine = repeatCharacter("*",columns);
-  let spaceLine = repeatCharacter(" ",columns-2);
-
-  rectangle += starLine+"\n";
-  for(let rowNum = 2; rowNum < rows; rowNum++){
-    rectangle += "*" + spaceLine + "*\n";
-  }
-  rectangle += starLine;
+  let topBottomLine = repeatCharacter("*",columns);
+  let middleLine = "*" + repeatCharacter(" ",columns-2) + "*";
+  let middleLines = new Array(rows-2).fill(middleLine).join("\n");
+  let rectangle = topBottomLine +"\n"+ middleLines +"\n"+ topBottomLine;
   return rectangle;
 }
 
