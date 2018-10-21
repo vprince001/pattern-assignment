@@ -89,15 +89,10 @@ const generateRightTriangle = function(numOfLines){
 }
 
 const generateTriangle = function(triangleAlignment,numOfLines){
-  let isAlignmentLeft = (triangleAlignment == "left");
-  let isAlignmentRight = (triangleAlignment == "right"); 
-  
-  if(isAlignmentLeft){
-    return generateLeftTriangle(numOfLines);
-  }
-  if(isAlignmentRight){
-    return generateRightTriangle(numOfLines);
-  }
+  const alignmentTypes = {};
+  alignmentTypes["left"] = generateTriangle(numOfLines);
+  alignmentTypes["right"] = generateTriangle(numOfLines);
+  return alignmentTypes[triangleAlignment];
 }
 
 //--------------------(DIAMOND)--------------------//
