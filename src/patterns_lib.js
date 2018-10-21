@@ -53,15 +53,11 @@ const generateAlternateRectangle = function(rows,columns){
 }
 
 const generateRectangle = function(typeOfRectangle,rows,columns){
-  if(typeOfRectangle == "filled"){
-    return generateFilledRectangle(rows,columns);
-  }
-  if(typeOfRectangle == "empty"){
-    return generateEmptyRectangle(rows,columns);
-  }
-  if(typeOfRectangle == "alternate"){
-    return generateAlternateRectangle(rows,columns);
-  }
+  const rectangleTypes = {};
+  rectangleTypes["filled"] = generateFilledRectangle(rows, columns);
+  rectangleTypes["empty"] = generateEmptyRectangle(rows, columns);
+  rectangleTypes["alternate"] = generateAlternateRectangle(rows, columns)
+  return rectangleTypes[typeOfRectangle];
 }
 
 //-------------------(TRIANGLE)-------------------//
@@ -90,8 +86,8 @@ const generateRightTriangle = function(numOfLines){
 
 const generateTriangle = function(triangleAlignment,numOfLines){
   const alignmentTypes = {};
-  alignmentTypes["left"] = generateTriangle(numOfLines);
-  alignmentTypes["right"] = generateTriangle(numOfLines);
+  alignmentTypes["left"] = generateLeftTriangle(numOfLines);
+  alignmentTypes["right"] = generateRightTriangle(numOfLines);
   return alignmentTypes[triangleAlignment];
 }
 
