@@ -8,10 +8,6 @@ const {generateFilledDiamond} = util_lib;
 const {generateHollowDiamond} = util_lib;
 const {generateAngledDiamond} = util_lib;
 
-const repeatCharacter = function(character,times){
-  return new Array(times).fill(character).join("");
-}
-
 const generateRectangle = function(typeOfRectangle,rows,columns){
   const rectangleTypes = {};
   rectangleTypes["filled"] = generateFilledRectangle(rows, columns);

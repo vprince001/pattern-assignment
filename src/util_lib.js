@@ -200,5 +200,13 @@ exports.generateLeftTriangle = generateLeftTriangle;
 exports.generateRightTriangle = generateRightTriangle;
 
 exports.generateFilledDiamond = generateFilledDiamond;
+exports.filledFirstHalf = filledFirstHalf;
+exports.filledSecondHalf = filledSecondHalf;
+
 exports.generateHollowDiamond = generateHollowDiamond;
+exports.hollowFirstHalf = hollowFirstHalf;
+exports.hollowSecondHalf = hollowSecondHalf;
+
 exports.generateAngledDiamond = generateAngledDiamond;
+exports.angledFirstHalf = angledFirstHalf;
+exports.angledSecondHalf = angledSecondHalf;

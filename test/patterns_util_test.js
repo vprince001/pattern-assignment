@@ -1,15 +1,21 @@
 const assert = require("assert");
 const util_lib = require("../src/util_lib.js");
 
-const {repeatCharacter} = util_lib;
-const {generateFilledRectangle} = util_lib;
-const {generateEmptyRectangle} = util_lib;
-const {generateAlternateRectangle} = util_lib;
-const {generateLeftTriangle} = util_lib;
-const {generateRightTriangle} = util_lib;
-const {generateFilledDiamond} = util_lib;
-const {generateHollowDiamond} = util_lib;
-const {generateAngledDiamond} = util_lib;
+const {repeatCharacter,            
+       generateFilledRectangle,    
+       generateEmptyRectangle,     
+       generateAlternateRectangle, 
+       generateLeftTriangle,       
+       generateRightTriangle,      
+       generateFilledDiamond,      
+       filledFirstHalf,            
+       filledSecondHalf,           
+       generateHollowDiamond,      
+       hollowFirstHalf,            
+       hollowSecondHalf,           
+       generateAngledDiamond,      
+       angledFirstHalf,            
+       angledSecondHalf} = util_lib;
 
 //-----------------repeatCharacter-----------------//
 assert.equal(repeatCharacter("*", 0),"");
@@ -98,6 +104,23 @@ generateFilledDiamond_5 +=    " ***"  + "\n";
 generateFilledDiamond_5 +=    "  *";
 assert.equal(generateFilledDiamond(5),generateFilledDiamond_5);
 
+//-------------------filledHalves------------------//
+let filledFirstHalf_3 = " *";
+assert.equal(filledFirstHalf(3), filledFirstHalf_3);
+
+let filledFirstHalf_5 = "  *" + "\n";
+filledFirstHalf_5 +=    " ***";
+assert.equal(filledFirstHalf(5), filledFirstHalf_5);
+
+let filledSecondHalf_3 = "\n" + "***";
+filledSecondHalf_3 +=    "\n" + " *";
+assert.equal(filledSecondHalf(3), filledSecondHalf_3);
+
+let filledSecondHalf_5 = "\n" + "*****";
+filledSecondHalf_5 +=    "\n" + " ***";
+filledSecondHalf_5 +=    "\n" + "  *";
+assert.equal(filledSecondHalf(5), filledSecondHalf_5);
+
 //--------------generateHollowDiamond--------------//
 let generateHollowDiamond_3 = " *"  + "\n";
 generateHollowDiamond_3 +=    "* *" + "\n";
@@ -111,6 +134,23 @@ generateHollowDiamond_5 +=    " * *"  + "\n";
 generateHollowDiamond_5 +=    "  *";
 assert.equal(generateHollowDiamond(5),generateHollowDiamond_5);
 
+//-------------------hollowHalves------------------//
+let hollowFirstHalf_3 = " *";
+assert.equal(hollowFirstHalf(3), hollowFirstHalf_3);
+
+let hollowFirstHalf_5 = "  *" + "\n";
+hollowFirstHalf_5 +=    " * *";
+assert.equal(hollowFirstHalf(5), hollowFirstHalf_5);
+
+let hollowSecondHalf_3 = "\n" + "* *";
+hollowSecondHalf_3 +=    "\n" + " *";
+assert.equal(hollowSecondHalf(3), hollowSecondHalf_3);
+
+let hollowSecondHalf_5 = "\n" + "*   *";
+hollowSecondHalf_5 +=    "\n" + " * *";
+hollowSecondHalf_5 +=    "\n" + "  *";
+assert.equal(hollowSecondHalf(5), hollowSecondHalf_5);
+
 //--------------generateAngledDiamond--------------//
 let generateAngledDiamond_3 = " *"  + "\n";
 generateAngledDiamond_3 +=    "* *" + "\n";
@@ -123,3 +163,20 @@ generateAngledDiamond_5 +=    "*   *" + "\n";
 generateAngledDiamond_5 +=    " \\ /" + "\n";
 generateAngledDiamond_5 +=    "  *";
 assert.equal(generateAngledDiamond(5),generateAngledDiamond_5);
+
+//-------------------angledHalves------------------//
+let angledFirstHalf_3 = " *";
+assert.equal(angledFirstHalf(3), angledFirstHalf_3);
+
+let angledFirstHalf_5 = "  *"   + "\n";
+angledFirstHalf_5 +=    " / \\";
+assert.equal(angledFirstHalf(5), angledFirstHalf_5);
+
+let angledSecondHalf_3 = "\n" + "* *";
+angledSecondHalf_3 +=    "\n" + " *";
+assert.equal(angledSecondHalf(3), angledSecondHalf_3);
+
+let angledSecondHalf_5 = "\n" + "*   *";
+angledSecondHalf_5 +=    "\n" + " \\ /";
+angledSecondHalf_5 +=    "\n" + "  *";
+assert.equal(angledSecondHalf(5), angledSecondHalf_5);
