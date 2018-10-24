@@ -7,6 +7,7 @@ const {generateEmptyRectangle} = util_lib;
 const {generateAlternateRectangle} = util_lib;
 const {generateLeftTriangle} = util_lib;
 const {generateRightTriangle} = util_lib;
+const {generateFilledDiamond} = util_lib;
 
 //-----------------repeatCharacter-----------------//
 assert.equal(repeatCharacter("*", 0),"");
@@ -69,7 +70,7 @@ generateLeftTriangle_7 += "******" + "\n";
 generateLeftTriangle_7 += "*******";
 assert.equal(generateLeftTriangle(7),generateLeftTriangle_7);
 
-//--------------generateRightTraingle--------------//
+//--------------generateRightTriangle--------------//
 let generateRightTriangle_2 = " *" + "\n";
 generateRightTriangle_2 +=    "**";
 assert.equal(generateRightTriangle(2),generateRightTriangle_2);
@@ -81,3 +82,16 @@ generateRightTriangle_6 +=    "  ****" + "\n";
 generateRightTriangle_6 +=    " *****" + "\n";
 generateRightTriangle_6 +=    "******";
 assert.equal(generateRightTriangle(6),generateRightTriangle_6);
+
+//--------------generateFilledDiamond--------------//
+let generateFilledDiamond_3 = " *"  +"\n";
+generateFilledDiamond_3 +=    "***" +"\n";
+generateFilledDiamond_3 +=    " *";
+assert.equal(generateFilledDiamond(3),generateFilledDiamond_3);
+
+let generateFilledDiamond_5 = "  *"   + "\n";
+generateFilledDiamond_5 +=    " ***"  + "\n";
+generateFilledDiamond_5 +=    "*****" + "\n";
+generateFilledDiamond_5 +=    " ***"  + "\n";
+generateFilledDiamond_5 +=    "  *";
+assert.equal(generateFilledDiamond(5),generateFilledDiamond_5);
