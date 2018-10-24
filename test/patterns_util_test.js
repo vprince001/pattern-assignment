@@ -5,6 +5,7 @@ const {repeatCharacter} = util_lib;
 const {generateFilledRectangle} = util_lib;
 const {generateEmptyRectangle} = util_lib;
 const {generateAlternateRectangle} = util_lib;
+const {generateLeftTriangle} = util_lib;
 
 //-----------------repeatCharacter-----------------//
 assert.equal(repeatCharacter("*", 0),"");
@@ -53,3 +54,16 @@ generateAlternateRectangle_5_2 +=    "**" + "\n";
 generateAlternateRectangle_5_2 +=    "--" + "\n";
 generateAlternateRectangle_5_2 +=    "**";
 assert.equal(generateAlternateRectangle(5,2), generateAlternateRectangle_5_2);
+
+//---------------generateLeftTriangle--------------//
+let generateLeftTriangle_5 = "*"    +"\n";
+generateLeftTriangle_5 +=    "**"   +"\n";
+generateLeftTriangle_5 +=    "***"  +"\n";
+generateLeftTriangle_5 +=    "****" +"\n";
+generateLeftTriangle_5 +=    "*****";
+assert.equal(generateLeftTriangle(5),generateLeftTriangle_5);
+
+let generateLeftTriangle_7 = generateLeftTriangle_5 + "\n";
+generateLeftTriangle_7 += "******" + "\n";
+generateLeftTriangle_7 += "*******";
+assert.equal(generateLeftTriangle(7),generateLeftTriangle_7);
