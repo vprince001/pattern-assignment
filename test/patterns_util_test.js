@@ -9,6 +9,7 @@ const {generateLeftTriangle} = util_lib;
 const {generateRightTriangle} = util_lib;
 const {generateFilledDiamond} = util_lib;
 const {generateHollowDiamond} = util_lib;
+const {generateAngledDiamond} = util_lib;
 
 //-----------------repeatCharacter-----------------//
 assert.equal(repeatCharacter("*", 0),"");
@@ -109,3 +110,16 @@ generateHollowDiamond_5 +=    "*   *" + "\n";
 generateHollowDiamond_5 +=    " * *"  + "\n";
 generateHollowDiamond_5 +=    "  *";
 assert.equal(generateHollowDiamond(5),generateHollowDiamond_5);
+
+//--------------generateAngledDiamond--------------//
+let generateAngledDiamond_3 = " *"  + "\n";
+generateAngledDiamond_3 +=    "* *" + "\n";
+generateAngledDiamond_3 +=    " *";
+assert.equal(generateAngledDiamond(3),generateAngledDiamond_3);
+
+let generateAngledDiamond_5 = "  *"   + "\n";
+generateAngledDiamond_5 +=    " / \\" + "\n";
+generateAngledDiamond_5 +=    "*   *" + "\n";
+generateAngledDiamond_5 +=    " \\ /" + "\n";
+generateAngledDiamond_5 +=    "  *";
+assert.equal(generateAngledDiamond(5),generateAngledDiamond_5);
