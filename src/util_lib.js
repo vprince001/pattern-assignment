@@ -190,6 +190,8 @@ const angledSecondHalf = function(numOfLines){
   return secondHalf;
 }
 
+//--------------------exports--------------------//
+exports.repeatCharacter = repeatCharacter;
 exports.generateFilledRectangle = generateFilledRectangle;
 exports.generateEmptyRectangle = generateEmptyRectangle;
 exports.generateAlternateRectangle = generateAlternateRectangle;
