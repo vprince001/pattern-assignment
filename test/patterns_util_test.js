@@ -4,6 +4,7 @@ const util_lib = require("../src/util_lib.js");
 const {repeatCharacter} = util_lib;
 const {generateFilledRectangle} = util_lib;
 const {generateEmptyRectangle} = util_lib;
+const {generateAlternateRectangle} = util_lib;
 
 //-----------------repeatCharacter-----------------//
 assert.equal(repeatCharacter("*", 0),"");
@@ -40,3 +41,15 @@ generateEmptyRectangle_12_5 +=    "*   *" + "\n";
 generateEmptyRectangle_12_5 +=    "*   *" + "\n";
 generateEmptyRectangle_12_5 +=    "*****";
 assert.equal(generateEmptyRectangle(12,5), generateEmptyRectangle_12_5);
+
+//------------generateAlternateRectangle-----------//
+let generateAlternateRectangle_2_8 = "********" + "\n";
+generateAlternateRectangle_2_8 +=    "--------";
+assert.equal(generateAlternateRectangle(2,8), generateAlternateRectangle_2_8);
+
+let generateAlternateRectangle_5_2 = "**" + "\n";
+generateAlternateRectangle_5_2 +=    "--" + "\n";
+generateAlternateRectangle_5_2 +=    "**" + "\n";
+generateAlternateRectangle_5_2 +=    "--" + "\n";
+generateAlternateRectangle_5_2 +=    "**";
+assert.equal(generateAlternateRectangle(5,2), generateAlternateRectangle_5_2);
