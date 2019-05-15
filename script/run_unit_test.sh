@@ -1,1 +1,5 @@
-node ./test/patterns_lib_test.js
+for TESTFILE in test/*test.js
+do 
+  echo $TESTFILE;
+  node $TESTFILE;
+done
